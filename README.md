@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Restaurant Review
 
 Today's sample app is going to be a very scaled-down version of something like Yelp or Urbanspoon.
@@ -25,3 +26,6 @@ Reviews
 *rating (star?)
 *user
 *restaurant
+=======
+# restaurant_review
+>>>>>>> bc82bf318dae9b393c28ea719d118c3ff8a776cf
