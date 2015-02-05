@@ -1,3 +1,59 @@
+<div class="container-fluid" >
 <h1><%=@restaurant.name%></h1>
 
-<p>Here are all the reviews:</p>
+ <section>
+   <% if flash[:notice] %>
+    <p id="notice"><%= flash[:notice]%></p>
+       <%end %>
+
+
+<div class="row">
+  <div class="col-md-9">
+    <%= image_tag(@restaurant.picture_url, width: '100%') if @restaurant.picture.present? %>
+
+
+    <p><b>Address: </b><%= @restaurant.address %></p>
+    <p><b>Phone: </b><%= @restaurant.phone %></p>
+
+    <!--<p>-->
+      <!--<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> | -->
+      <!--<%= link_to 'Destroy', @restaurant, data: { confirm: 'Are you sure?' }, method: :delete %> | -->
+      <!--<%= link_to 'Back', restaurants_path %>-->
+    <!--</p>-->
+  </div>
+</div>
+ </section>
+
+<section>
+<h3>Here are all the reviews</h3>
+<% @restaurant.reviews.order(created_at: :desc).each do |review| %>
+     <article>
+       <%if review.recommended?%>
+      <p class="recommended">Rating:<%= review.rating%></p>
+      <% end %>
+       <% if review.recommended? %>
+           <p> RECOMMENDED!</p>
+           <% end %>
+
+      <br />
+      <p>Comment:<%= review.body %></p>
+      <br/>
+      <p>Posted by:<%= review.user_name %></p>
+      <p><%= link_to 'Delete', review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+     </article>
+<% end %>
+  </section>
+
+<!--<section>-->
+  <!--<%if session[:user_id]  %>-->
+<!--<%= render 'reviews/form' %>-->
+  <!--<%else %>-->
+  <!--<p>If you'd like to review this place, <%= link_to 'log in here', new_user_registration_path %></p>-->
+      <!--<% end %>-->
+<!--</section>-->
+
+
+<%= link_to "Back home", restaurants_path %>
+
+
+</div>

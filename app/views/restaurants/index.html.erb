@@ -1,10 +1,24 @@
-<h1>Church Street District Restaurants</h1>
-<p>Here are places I've eaten downtown, and enjoyed and/or gotten food poisoning from.</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+     <h1>Church Street District Restaurants</h1>
+    <p>Here are places I've eaten downtown, and enjoyed and/or gotten food poisoning from.</p>
 
-<ul>
+
+
+<table class="table">
+  <tr><th>Name</th><th>Address</th><th>Number of reviews</th></tr>
   <% @restaurants.each do |restaurant| %>
-  <li><%= link_to restaurant.name, restaurant%></li>
+       <tr>
+         <td><%= link_to restaurant.name, restaurant%> </td>
+         <td><%= restaurant.address%> </td>
+         <td><%= restaurant.reviews.length%> </td>
+       </tr>
   <% end %>
-</ul>
+</table>
+
 
  <%= link_to 'Add a new restaurant', new_restaurant_path %>
+</div>
+ </div>
+</div>

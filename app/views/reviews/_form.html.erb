@@ -1,0 +1,38 @@
+<%= form_for(@review) do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset>
+    <legend><h2>Add a review</h2></legend>
+
+
+    <%= f.label :body %><br>
+    <%= f.text_area :body%><br>
+
+    <%= f.label :rating %>
+    <%= f.select :rating, options_for_select([["1 (lowest)",1], ["2 (not good)",2],["3 (bleh)",3],["4 (pretty good)",4],
+                         ["5 (so good, I want to have this restaurant's baby",5]])%>
+
+
+
+    <%= f.label :recommended, "Would you recommend this joint?" %>
+      <%= f.check_box :recommended%> <br>
+
+
+    <%= f.hidden_field :restaurant_id %>
+
+
+    <%= f.submit %>
+
+
+</fieldset>
+ <% end %>
+

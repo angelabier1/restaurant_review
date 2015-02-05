@@ -1,14 +1,32 @@
 Rails.application.routes.draw do
-  resources :restaurants, :users
+  resources :recommendations
+
+  resources :reviews
+
+  # resources :restaurants do
+  #   resources :reviews
+  # end
+  #
+  # get 'sections' => 'html#sections'
+
+  devise_for :users
+  resources :restaurants
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'restaurants#index'
+  root :to => redirect('/restaurants')
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+
+  # get 'login' => 'sessions#new'
+  # post 'login' => 'sessions#create'
+  # delete 'login' => 'sessions#destroy'
+  #
+  # resources :users
+  # get 'signup' => 'users#new'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
